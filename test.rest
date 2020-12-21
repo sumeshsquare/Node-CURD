@@ -1,0 +1,31 @@
+# API for GET ALL
+GET http://172.26.148.226:8080/flows
+####
+
+# API for GET specific flow
+GET http://172.26.148.226:8080/flows/sms
+####
+
+# API for Create new Flow
+POST http://172.26.148.226:8080/flows
+Content-Type: application/json
+
+{
+    "flow" : "SMS",
+    "files": "1234.txt"    
+}
+###
+
+# API for Update exsisting Flow
+PUT http://172.26.148.226:8080/flows/SMS
+Content-Type: application/json
+
+{
+    "flow": "SMS",
+    "files": "12345.txt"    
+}
+
+###
+
+# API for DELETE Flow
+DELETE http://172.26.148.226:8080/flows/Drop

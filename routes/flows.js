@@ -36,6 +36,16 @@ var checkIDExist = function (req, res, next) {
     }); 
 };
 
+var checkFlowInput = function (req, res, next) {  
+    //console.log('Check ID input');
+    if(!req.body.flow == true || !req.body.files == true)  {
+        //console.log('Invalid ID supplied');
+        res.status(400).json('Invalid Flow supplied');
+    } else {
+        next();
+    }
+};
+
 router.get('/', function(req, res){
     //console.log('Getting all flow');
     Flow.findAll().then(flow => {
@@ -43,7 +53,7 @@ router.get('/', function(req, res){
     });
 });
 
-router.post('/', function(req, res){
+router.post('/', [checkFlowInput], function(req, res){
     Flow.create({
         flow: req.body.flow,
         files: req.body.files
@@ -65,22 +75,22 @@ router.get('/:flow', [ checkFlowExist], function(req, res){
     });
 });
 
-router.put('/:id', [ checkIDExist], function(req, res){
+router.put('/:flow', [ checkFlowExist], function(req, res){
     //console.log('Update flow by id');
     Flow.update({
         flow: req.body.flow,
         files: req.body.files
     },{
-        where: { id: req.params.id }
+        where: { flow: req.params.flow }
     }).then(result => {
         res.status(200).json(result);
     });
 });
 
-router.delete('/:id', [ checkIDExist], function(req, res){
+router.delete('/:flow', [ checkFlowExist], function(req, res){
     //console.log('Delete flow by id');
     Flow.destroy({
-        where: { id: req.params.id }
+        where: { flow: req.params.flow }
     }).then(result => {
         res.status(200).json(result);
     });
