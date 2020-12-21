@@ -1,7 +1,7 @@
 var express = require('express');
 var Flow = require('../models').Flow;
 var router = express.Router();
-
+var dateFormat = require('dateformat');
 // middleware
 // var checkIDInput = function (req, res, next) {  
 //     //console.log('Check ID input');
@@ -40,7 +40,7 @@ var checkFlowInput = function (req, res, next) {
     //console.log('Check ID input');
     if(!req.body.flow == true || !req.body.files == true)  {
         //console.log('Invalid ID supplied');
-        res.status(400).json('Invalid Flow supplied');
+        res.status(400).json('Invalid input request supplied');
     } else {
         next();
     }
@@ -56,7 +56,10 @@ router.get('/', function(req, res){
 router.post('/', [checkFlowInput], function(req, res){
     Flow.create({
         flow: req.body.flow,
-        files: req.body.files
+        files: req.body.files,
+        createdAt: dateFormat(new Date(), "ddd mmm dd yyyy HH:MM:ss" ),
+        updatedAt: ""
+
     }).then(flow => {
         /*console.log(flow.get({
             plain: true
@@ -79,7 +82,8 @@ router.put('/:flow', [ checkFlowExist], function(req, res){
     //console.log('Update flow by id');
     Flow.update({
         flow: req.body.flow,
-        files: req.body.files
+        files: req.body.files,
+        updatedAt: dateFormat(new Date(), "ddd mmm dd yyyy HH:MM:ss" )
     },{
         where: { flow: req.params.flow }
     }).then(result => {

@@ -1,31 +1,31 @@
 # API for GET ALL
-GET http://172.26.148.226:8080/flows
+GET http://172.26.148.86:8080/flows
 ####
 
 # API for GET specific flow
-GET http://172.26.148.226:8080/flows/sms
+GET http://172.26.148.86:8080/flows/SMS1
 ####
 
 # API for Create new Flow
-POST http://172.26.148.226:8080/flows
+POST http://172.26.148.86:8080/flows
 Content-Type: application/json
 
 {
-    "flow" : "SMS",
+    "flow" : "SMS1",
     "files": "1234.txt"    
 }
 ###
 
 # API for Update exsisting Flow
-PUT http://172.26.148.226:8080/flows/SMS
+PUT http://172.26.148.86:8080/flows/SMS1
 Content-Type: application/json
 
 {
-    "flow": "SMS",
+    "flow": "SMS1",
     "files": "12345.txt"    
 }
 
 ###
 
 # API for DELETE Flow
-DELETE http://172.26.148.226:8080/flows/Drop
+DELETE http://172.26.148.86:8080/flows/SMS1
