@@ -3,11 +3,12 @@ GET http://172.26.148.86:8080/flows
 ####
 
 # API for GET specific flow
-GET http://172.26.148.86:8080/flows/SMS2
+GET http://172.26.148.86:8080/flows/SMS1
 ####
 
 # API for Create new Flow
 POST http://172.26.148.86:8080/flows
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoic3VtZXNoIiwiaWF0IjoxNjA4NTQyMzAzLCJleHAiOjE2MDg1NDIzNDh9.8AsP7g6WJxCpkzjreAOZgJCeM24x8Qu0CY9BH_UxAmk
 Content-Type: application/json
 
 {
@@ -22,10 +23,36 @@ Content-Type: application/json
 
 {
     "flow": "SMS1",
-    "files": "12345.txt"    
+    "files": "123456.txt"    
 }
 
 ###
 
 # API for DELETE Flow
-DELETE http://172.26.148.86:8080/flows/SMS1
+DELETE http://172.26.148.86:8080/flows/SMS2
+
+
+###
+
+POST http://172.26.148.86:8080/login
+Content-Type: application/json
+
+{
+    "username": "sumesh"
+}
+
+###
+POST http://172.26.148.86:8080/token
+Content-Type: application/json
+
+{
+    "token" : "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoic3VtZXNoIiwiaWF0IjoxNjA4NTQyNjEwfQ.dj9uW1SATzIXJ3XzgeX2LRIwlZaaX5zP7CGomKofBm8"
+}
+
+###
+DELETE http://172.26.148.86:8080/logout
+Content-Type: application/json
+
+{
+    "token" : "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoic3VtZXNoIiwiaWF0IjoxNjA4NTQyNjEwfQ.dj9uW1SATzIXJ3XzgeX2LRIwlZaaX5zP7CGomKofBm8"
+}

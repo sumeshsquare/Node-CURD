@@ -2,16 +2,9 @@ var express = require('express');
 var Flow = require('../models').Flow;
 var router = express.Router();
 var dateFormat = require('dateformat');
-// middleware
-// var checkIDInput = function (req, res, next) {  
-//     //console.log('Check ID input');
-//     if(isNaN(req.params.flow)) {
-//         //console.log('Invalid ID supplied');
-//         res.status(400).json('Invalid ID supplied');
-//     } else {
-//         next();
-//     }
-// };
+const jwt = require('jsonwebtoken')
+require("dotenv").config();
+
 var checkFlowExist = function (req, res, next) {  
     //console.log('Check ID exist');
     Flow.count({ where: { flow: req.params.flow } }).then(count => {
@@ -46,6 +39,19 @@ var checkFlowInput = function (req, res, next) {
     }
 };
 
+var Auth = function authenticateToken(req, res, next) {
+    const authHeader = req.headers['authorization']
+    const token = authHeader && authHeader.split(' ')[1]
+    if (token == null) return res.sendStatus(401)
+  
+    jwt.verify(token, process.env.ACCESS_TOKEN_SECRET, (err, user) => {
+      console.log(err)
+      if (err) return res.sendStatus(403)
+      req.user = user
+      next()
+    })
+};
+
 router.get('/', function(req, res){
     //console.log('Getting all flow');
     Flow.findAll().then(flow => {
@@ -53,7 +59,7 @@ router.get('/', function(req, res){
     });
 });
 
-router.post('/', [checkFlowInput], function(req, res){
+router.post('/', [checkFlowInput,Auth], function(req, res){
     Flow.create({
         flow: req.body.flow,
         files: req.body.files,
