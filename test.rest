@@ -3,7 +3,7 @@ GET http://172.26.148.86:8080/flows
 ####
 
 # API for GET specific flow
-GET http://172.26.148.86:8080/flows/SMS1
+GET http://172.26.148.86:8080/flows/SMS2
 ####
 
 # API for Create new Flow
@@ -11,7 +11,7 @@ POST http://172.26.148.86:8080/flows
 Content-Type: application/json
 
 {
-    "flow" : "SMS1",
+    "flow" : "SMS2",
     "files": "1234.txt"    
 }
 ###

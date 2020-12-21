@@ -71,8 +71,8 @@ router.post('/', [checkFlowInput], function(req, res){
 });
 
 router.get('/:flow', [ checkFlowExist], function(req, res){
-    console.log('Get flow by id');
-    Flow.find({ where: { flow: req.params.flow } }).then(flow => {
+    //console.log('Get flow by id');
+    Flow.findOne({ where: { flow: req.params.flow } }).then(flow => {
         //console.log(flow);
         res.status(200).json(flow);
     });
