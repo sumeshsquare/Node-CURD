@@ -64,11 +64,21 @@ app.post('/login', (req, res) => {
 
   const username = req.body.username
   const user = { name: username }
-
-  const accessToken = generateAccessToken(user)
-  const refreshToken = jwt.sign(user, process.env.REFRESH_TOKEN_SECRET)
-  refreshTokens.push(refreshToken)
-  res.json({ accessToken: accessToken, refreshToken: refreshToken })
+  if (user == null) {
+    return res.status(400).send('Cannot find user')
+  }
+  try {
+    if(req.body.password === process.env.ADMIN_PASS && req.body.username === "admin") {
+      const accessToken = generateAccessToken(user)
+      const refreshToken = jwt.sign(user, process.env.REFRESH_TOKEN_SECRET)
+      refreshTokens.push(refreshToken)
+      res.json({ accessToken: accessToken, refreshToken: refreshToken })
+    } else {
+      res.send('Not Allowed')
+    }
+  } catch {
+    res.status(500).send()
+  }
 })
 
 function generateAccessToken(user) {

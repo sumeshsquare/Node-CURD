@@ -38,7 +38,8 @@ POST http://172.26.148.86:8080/login
 Content-Type: application/json
 
 {
-    "username": "sumesh"
+    "username": "admin",
+    "password": "password"
 }
 
 ###

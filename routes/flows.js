@@ -84,7 +84,7 @@ router.get('/:flow', [ checkFlowExist], function(req, res){
     });
 });
 
-router.put('/:flow', [ checkFlowExist], function(req, res){
+router.put('/:flow', [ checkFlowExist,Auth], function(req, res){
     //console.log('Update flow by id');
     Flow.update({
         flow: req.body.flow,
@@ -97,7 +97,7 @@ router.put('/:flow', [ checkFlowExist], function(req, res){
     });
 });
 
-router.delete('/:flow', [ checkFlowExist], function(req, res){
+router.delete('/:flow', [ checkFlowExist,Auth], function(req, res){
     //console.log('Delete flow by id');
     Flow.destroy({
         where: { flow: req.params.flow }
