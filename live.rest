@@ -1,0 +1,59 @@
+# API for GET ALL
+GET https://flow-arjun.herokuapp.com/flows
+####
+
+# API for GET specific flow
+GET https://flow-arjun.herokuapp.com/flows/SMS1
+####
+
+# API for Create new Flow
+POST https://flow-arjun.herokuapp.com/flows
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoic3VtZXNoIiwiaWF0IjoxNjA4NTQyMzAzLCJleHAiOjE2MDg1NDIzNDh9.8AsP7g6WJxCpkzjreAOZgJCeM24x8Qu0CY9BH_UxAmk
+Content-Type: application/json
+
+{
+    "flow" : "SMS2",
+    "files": "1234.txt"    
+}
+###
+
+# API for Update exsisting Flow
+PUT https://flow-arjun.herokuapp.com/flows/SMS1
+Content-Type: application/json
+
+{
+    "flow": "SMS1",
+    "files": "123456.txt"    
+}
+
+###
+
+# API for DELETE Flow
+DELETE https://flow-arjun.herokuapp.com/flows/SMS2
+
+
+###
+
+POST https://flow-arjun.herokuapp.com/login
+Content-Type: application/json
+
+{
+    "username": "admin",
+    "password": "password"
+}
+
+###
+POST https://flow-arjun.herokuapp.com/token
+Content-Type: application/json
+
+{
+    "token" : "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoic3VtZXNoIiwiaWF0IjoxNjA4NTQyNjEwfQ.dj9uW1SATzIXJ3XzgeX2LRIwlZaaX5zP7CGomKofBm8"
+}
+
+###
+DELETE https://flow-arjun.herokuapp.com/logout
+Content-Type: application/json
+
+{
+    "token" : "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoic3VtZXNoIiwiaWF0IjoxNjA4NTQyNjEwfQ.dj9uW1SATzIXJ3XzgeX2LRIwlZaaX5zP7CGomKofBm8"
+}
