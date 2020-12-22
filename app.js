@@ -10,6 +10,13 @@ require("dotenv").config();
 const cors = require('cors');
 app.use(cors());
 app.options('*', cors());
+app.use(function(req, res, next) {
+  res.setHeader("Access-Control-Allow-Headers", "X-Requested-With,content-type, Accept,Authorization,Origin");
+  res.setHeader("Access-Control-Allow-Origin", "*");
+  res.setHeader("Access-Control-Allow-Methods", "GET, POST, OPTIONS, PUT, PATCH, DELETE");
+  res.setHeader("Access-Control-Allow-Credentials", true);
+  next();
+});
 // models
 var models = require("./models");
 
