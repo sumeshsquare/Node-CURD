@@ -30,7 +30,7 @@ Content-Type: application/json
 
 # API for DELETE Flow
 DELETE https://flow-arjun.herokuapp.com/flows/SMS2
-
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiYWRtaW4iLCJpYXQiOjE2MDg1NDM4ODMsImV4cCI6MTYwODU0MzkyOH0.KzjSbuulrRuT0ao4CC9sXIucHv_zJXv1dEhvFdFIfFU
 
 ###
 

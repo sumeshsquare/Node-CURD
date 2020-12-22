@@ -7,6 +7,9 @@ var port = process.env.PORT || 8080;
 const jwt = require('jsonwebtoken')
 require("dotenv").config();
 
+const cors = require('cors');
+app.use(cors());
+app.options('*', cors());
 // models
 var models = require("./models");
 
