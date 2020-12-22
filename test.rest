@@ -1,14 +1,14 @@
 # API for GET ALL
-GET http://172.26.148.86:8080/flows
+GET http://172.18.207.197:8080/flows
 ####
 
 # API for GET specific flow
-GET http://172.26.148.86:8080/flows/SMS1
+GET http://172.18.207.197:8080/flows/SMS1
 ####
 
 # API for Create new Flow
-POST http://172.26.148.86:8080/flows
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoic3VtZXNoIiwiaWF0IjoxNjA4NTQyMzAzLCJleHAiOjE2MDg1NDIzNDh9.8AsP7g6WJxCpkzjreAOZgJCeM24x8Qu0CY9BH_UxAmk
+POST http://172.18.207.197:8080/flows
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiYWRtaW4iLCJpYXQiOjE2MDg2NDM0MTgsImV4cCI6MTYwODY0MzQ2M30.-GH3wS0urs8O5Q-iG7I4YOo--OfpEXJukL91KaahSlw
 Content-Type: application/json
 
 {
@@ -18,7 +18,7 @@ Content-Type: application/json
 ###
 
 # API for Update exsisting Flow
-PUT http://172.26.148.86:8080/flows/SMS1
+PUT http://172.18.207.197:8080/flows/SMS1
 Content-Type: application/json
 
 {
@@ -29,12 +29,12 @@ Content-Type: application/json
 ###
 
 # API for DELETE Flow
-DELETE http://172.26.148.86:8080/flows/SMS2
-
+DELETE http://172.18.207.197:8080/flows/SMS2
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiYWRtaW4iLCJpYXQiOjE2MDg2NDM0MTgsImV4cCI6MTYwODY0MzQ2M30.-GH3wS0urs8O5Q-iG7I4YOo--OfpEXJukL91KaahSlw
 
 ###
 
-POST http://172.26.148.86:8080/login
+POST http://172.18.207.197:8080/login
 Content-Type: application/json
 
 {
@@ -43,7 +43,7 @@ Content-Type: application/json
 }
 
 ###
-POST http://172.26.148.86:8080/token
+POST http://172.18.207.197:8080/token
 Content-Type: application/json
 
 {
@@ -51,7 +51,7 @@ Content-Type: application/json
 }
 
 ###
-DELETE http://172.26.148.86:8080/logout
+DELETE http://172.18.207.197:8080/logout
 Content-Type: application/json
 
 {

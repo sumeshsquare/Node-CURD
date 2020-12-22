@@ -7,9 +7,9 @@ var port = process.env.PORT || 8080;
 const jwt = require('jsonwebtoken')
 require("dotenv").config();
 
-const cors = require('cors');
-app.use(cors());
-app.options('*', cors());
+// const cors = require('cors');
+// app.use(cors());
+// app.options('*', cors());
 app.use(function(req, res, next) {
   res.setHeader("Access-Control-Allow-Headers", "X-Requested-With,content-type, Accept,Authorization,Origin");
   res.setHeader("Access-Control-Allow-Origin", "*");
@@ -92,5 +92,5 @@ app.post('/login', (req, res) => {
 })
 
 function generateAccessToken(user) {
-  return jwt.sign(user, process.env.ACCESS_TOKEN_SECRET, { expiresIn: '45s' })
+  return jwt.sign(user, process.env.ACCESS_TOKEN_SECRET, { expiresIn: '450s' })
 }
