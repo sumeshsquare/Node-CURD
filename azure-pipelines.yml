@@ -10,9 +10,9 @@ pool:
   vmImage: 'ubuntu-latest'
 
 steps:
-- task: AWSShellScript@1
+- task: SSH@0
   inputs:
-    awsCredentials: 'AWS-Cloud-Tyre'
-    regionName: 'us-east-1'
-    scriptType: 'inline'
-    inlineScript: 'ls'
+    sshEndpoint: 'AWS-EC2'
+    runOptions: 'commands'
+    commands: 'pwd'
+    readyTimeout: '20000'
